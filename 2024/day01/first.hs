@@ -1,4 +1,5 @@
 import Data.List (delete, minimum)
+import Utils (readColumnFile)
 
 popSmallest :: [Int] -> (Int, [Int])
 -- Calculate the minimum value of a list and return it along with the list without that value
@@ -23,11 +24,7 @@ sumDifferences xs ys = sum (calculateDifference xs ys)
 main :: IO ()
 main = do
   -- Read the file and parse the contents. The file is expected to have two columns of integers
-  contents <- readFile "input"
-  -- Split the contents into lines, then split each line into words, then convert each word to an integer
-  let linesFromFile = lines contents
-  let wordsList = map words linesFromFile
-  let (list1, list2) = unzip $ map (\[x, y] -> (read x :: Int, read y :: Int)) wordsList
+  (list1, list2) <- readColumnFile "input"
   -- Calculate the sum of the differences between the smallest values of the two lists
   let result = sumDifferences list1 list2
   print result
