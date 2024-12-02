@@ -7,7 +7,7 @@ countOccurrences = foldl (\acc x -> Map.insertWith (+) x 1 acc) Map.empty
 
 main :: IO ()
 main = do
-  (locations, list2) <- readColumnFile "input"
+  [locations, list2] <- readColumnFile "input"
   let occurrences = countOccurrences list2
   let similarity = foldl (\acc x -> acc + x * Map.findWithDefault 0 x occurrences) 0 locations
   print similarity

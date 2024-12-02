@@ -24,7 +24,7 @@ sumDifferences xs ys = sum (calculateDifference xs ys)
 main :: IO ()
 main = do
   -- Read the file and parse the contents. The file is expected to have two columns of integers
-  (list1, list2) <- readColumnFile "input"
+  [list1, list2] <- readColumnFile "input"
   -- Calculate the sum of the differences between the smallest values of the two lists
   let result = sumDifferences list1 list2
   print result
